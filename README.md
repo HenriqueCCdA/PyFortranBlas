@@ -40,3 +40,9 @@ Para usaros scripts basta:
 ```bash
 ./scripts/build.sh
 ```
+
+## Rodandos os teste
+
+```bash
+pytest
+```

@@ -115,9 +115,18 @@ subroutine pcg(a, b, x, tol, maxit, neq)
     ! norm = || x ||
     norm_x = sqrt(dot(x, x, neq));
 
-    print *,j, xKx, norm_x, x, tol, neq
+10  format('(PCG) solver:'/&
+        ,'Solver tol           = ',d20.6/&
+        ,'Number of equations  = ',i20/&
+        ,'Number of iterations = ',i20/&
+        ,'| xKx |              = ',d20.10/&
+        ,'| x |                = ',d20.10&
+    )
+
+    print 10, tol, neq, j, xKx, norm_x
 
     ! free
     deallocate(m, z, r, p)
+
 
 end subroutine pcg

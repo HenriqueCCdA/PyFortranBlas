@@ -15,13 +15,11 @@ def main():
     b = np.array([2.0, 6.0, 1.0], dtype=np.float64, order="F")
     x = np.zeros_like(b, dtype=np.float64, order="F")
 
-    matvec(a, b, x)
-    xAx = dot(x, b)
+    print(f"Chamando PCG da lib fortran:\n")
 
-    print(f"x * Ax = {xAx}")
     pcg(a, b, x)
 
-    print(x) # 1.661, 0.945, 0.502
+    print(f"\nSolução do sistema: {x}")
 
 if __name__ == "__main__":
     main()
