@@ -1,0 +1,23 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module fblas ! in 
+    interface  ! in :fblas
+        function dot(x,y,n) result (d) ! in :fblas:fblas.f90
+            real(kind=8) dimension(n),intent(in) :: x
+            real(kind=8) dimension(n),intent(in),depend(n) :: y
+            integer, optional,intent(in),check(shape(x, 0) == n),depend(x) :: n=shape(x, 0)
+            real(kind=8) :: d
+        end function dot
+        subroutine matvec(a,x,y,n) ! in :fblas:fblas.f90
+            real(kind=8) dimension(n,n),intent(inout) :: a
+            real(kind=8) dimension(n),intent(in),depend(n) :: x
+            real(kind=8) dimension(n),intent(inout),depend(n) :: y
+            integer, optional,intent(in),check(shape(a, 0) == n),depend(a) :: n=shape(a, 0)
+        end subroutine matvec
+    end interface 
+end python module fblas
+
+! This file was auto-generated with f2py (version:1.26.2).
+! See:
+! https://web.archive.org/web/20140822061353/http://cens.ioc.ee/projects/f2py2e
