@@ -1,3 +1,4 @@
 meson==1.3.0  # build
 numpy==1.26.2 # f2py
 pytest==7.4.3 # test
+mypy==1.7.1 # static type

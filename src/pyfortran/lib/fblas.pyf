@@ -10,11 +10,19 @@ python module fblas ! in
             real(kind=8) :: d
         end function dot
         subroutine matvec(a,x,y,n) ! in :fblas:fblas.f90
-            real(kind=8) dimension(n,n),intent(inout) :: a
+            real(kind=8) dimension(n,n),intent(in) :: a
             real(kind=8) dimension(n),intent(in),depend(n) :: x
             real(kind=8) dimension(n),intent(inout),depend(n) :: y
             integer, optional,intent(in),check(shape(a, 0) == n),depend(a) :: n=shape(a, 0)
         end subroutine matvec
+        subroutine pcg(a,b,x,tol,maxit,neq) ! in :fblas:fblas.f90
+            real(kind=8) dimension(neq,neq),intent(in) :: a
+            real(kind=8) dimension(neq),intent(in),depend(neq) :: b
+            real(kind=8) dimension(neq),intent(inout),depend(neq) :: x
+            real(kind=8) intent(in) :: tol
+            integer intent(in) :: maxit
+            integer, optional,intent(in),check(shape(a, 0) == neq),depend(a) :: neq=shape(a, 0)
+        end subroutine pcg
     end interface 
 end python module fblas
 

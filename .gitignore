@@ -1,0 +1,3 @@
+*.so
+.venv
+.pytest_cache
