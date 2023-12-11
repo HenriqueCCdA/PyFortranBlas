@@ -17,7 +17,7 @@ def main():
 
     print(f"Chamando PCG da lib fortran:\n")
 
-    pcg(a, b, x)
+    pcg(a, b, x, fprint=True)
 
     print(f"\nSolução do sistema: {x}")
 

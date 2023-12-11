@@ -28,7 +28,7 @@ subroutine matvec(a, x, y, n)
 end subroutine matvec
 
 
-subroutine pcg(a, b, x, tol, maxit, neq)
+subroutine pcg(a, b, x, tol, maxit, neq, fprint)
     implicit none
     integer, intent(in) :: neq
     !
@@ -37,6 +37,7 @@ subroutine pcg(a, b, x, tol, maxit, neq)
     real(8), dimension(neq), intent(inout) :: x
     real(8), intent(in) :: tol
     integer, intent(in) :: maxit
+    logical, intent(in) :: fprint
     !
     real(8), dimension(:), allocatable :: m, z, r, p
     integer :: i, j
@@ -123,7 +124,9 @@ subroutine pcg(a, b, x, tol, maxit, neq)
         ,'| x |                = ',d20.10&
     )
 
-    print 10, tol, neq, j, xKx, norm_x
+    if (fprint) then
+        print 10, tol, neq, j, xKx, norm_x
+    endif
 
     ! free
     deallocate(m, z, r, p)

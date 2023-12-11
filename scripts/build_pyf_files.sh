@@ -7,6 +7,6 @@ source .venv/bin/activate
 
 cd src/pyfortran/lib
 
-python -m numpy.f2py fblas.f90 -h fblas.pyf -m fblas
+python -m numpy.f2py fblas.f90 -h fblas.pyf -m fblas --overwrite-signature
 
 deactivate

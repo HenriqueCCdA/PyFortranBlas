@@ -1,6 +1,10 @@
 # PyFortran
 
-### Executand
+Projeto simples para explorar `interoperabilidade` entre o `Fortran` e o `Python`. Para essa comunicação foi utilização o `f2py`. O `f2py` gera automaticamente um wrapper em `C` para depois compilar uma lib `cpython`. O `f2py` usa `meson` para configurar o build.
+
+Para manter tudo o mais simples possivel a compilação foi feita de forma manual com auxilio de scripts,
+
+## Executando
 
 Para executar:
 
@@ -9,8 +13,6 @@ python -m src.pyfortran
 ```
 
 ## Compilação da lib Fortran
-
-A compilação será feita de forma manual usando o `f2py` e `meson`.
 
 Primeiro entrar na pasta `src/pyfortran/lib`. Para compilar a lib `.so` basta:
 
@@ -22,6 +24,20 @@ Para gerar o arquivo de interface `fblas.pyf` basta:
 
 ```bash
 python -m numpy.f2py fblas.f90 -h fblas.pyf -m fblas
+```
+
+Após compilar deverá ser criado a lib `fblas.cpython-312-x86_64-linux-gnu.so`.
+
+```bash
+└── src
+    └── pyfortran
+        ├── blas.py
+        ├── __init__.py
+        ├── lib
+        │   ├── fblas.cpython-312-x86_64-linux-gnu.so
+        │   ├── fblas.f90
+        │   └── fblas.pyf
+        └── __main__.py
 ```
 
 ## Scripts de apoio
